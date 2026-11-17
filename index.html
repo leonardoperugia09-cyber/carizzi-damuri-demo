@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Carizzi d'Amuri · Ristorante a Palermo, Kalsa</title>
+<meta name="description" content="Carizzi d'Amuri, Via Lungarini 21, Palermo. Cucina siciliana rivisitata, a cena sotto archi di pietra. Menù che cambia ogni settimana. Prenota su WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#edccbe; --surface:#e6bfae; --ink:#3a1520; --muted:#6b4250;
+  --accent:#3a1520; --accent-ink:#edccbe;
+  --field:#3a1520; --field-ink:#edccbe;
+  --step-small:clamp(0.875rem,0.84rem + 0.1vw,0.9375rem);
+  --step-body:clamp(1.0625rem,1rem + 0.25vw,1.1875rem);
+  --step-lead:clamp(1.3rem,1.1rem + 0.8vw,1.75rem);
+  --step-head:clamp(2.1rem,1.3rem + 3.2vw,4rem);
+  --step-display:clamp(2.6rem,1.2rem + 5.4vw,6rem);
+  --display:"Bodoni Moda",Georgia,serif;
+  --text:"Jost",system-ui,sans-serif;
+  --m:clamp(16px,3vw,40px);
+  --gap:clamp(120px,14vw,200px);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font:400 var(--step-body)/1.6 var(--text);letter-spacing:.01em;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.on-dark :focus-visible{outline-color:var(--accent-ink)}
+h1,h2,h3{font-family:var(--display);font-weight:500;letter-spacing:-.02em;line-height:.98;font-optical-sizing:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:52px;padding:0 28px;background:var(--accent);color:var(--accent-ink);font:500 var(--step-body)/1 var(--text);text-decoration:none;border:0;cursor:pointer;transition:transform .2s var(--ease),background-color .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(1px) scale(.98)}
+.on-dark .btn{background:var(--accent-ink);color:var(--accent)}
+.link{text-decoration:underline;text-underline-offset:.25em;text-decoration-thickness:1px;transition:text-underline-offset .2s}
+.link:hover{text-underline-offset:.4em}
+
+/* preview banner */
+.preview{background:var(--ink);color:var(--accent-ink);font-size:var(--step-small);padding:10px calc(var(--m) + 72px) 10px var(--m);display:flex;justify-content:space-between;gap:16px;align-items:center}
+.preview a{font-weight:500}
+.lang{position:fixed;top:12px;right:var(--m);z-index:20;min-height:44px;min-width:56px;background:var(--bg);color:var(--ink);border:0;font:500 var(--step-small)/1 var(--text);cursor:pointer;transition:transform .2s var(--ease)}
+.lang:hover{transform:translateY(-2px)}
+
+/* hero: the card over the room */
+.hero{position:relative;height:150svh}
+.hero__room{position:sticky;top:0;height:100svh;overflow:hidden}
+.hero__room img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;filter:brightness(.62) saturate(.9);transform:scale(1.06);animation:drift 26s var(--ease) infinite alternate}
+@keyframes drift{to{transform:scale(1.14) translate(-1.5%,-1%)}}
+.hero__stage{position:absolute;inset:0;display:grid;place-items:start center;pointer-events:none}
+.card{pointer-events:auto;position:sticky;top:calc(50svh - min(28svh,280px));width:min(60vw,900px);min-height:min(56svh,560px);background:var(--bg);padding:clamp(28px,3vw,48px);display:grid;grid-template-rows:auto 1fr auto;gap:28px;border-top-left-radius:min(22vw,320px) min(20svh,200px);transform-origin:50% 0;will-change:transform}
+.card__title{font-size:var(--step-display);text-align:right;padding-left:clamp(60px,9vw,150px)}
+.card__title .tw{display:inline-block}
+.card__body{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-content:end}
+.facts{font-size:var(--step-lead);line-height:1.2;list-style:none}
+.facts li+li{margin-top:.25em}
+.card__lead{font-size:var(--step-lead);line-height:1.25;max-width:30ch;font-family:var(--display)}
+.card__foot{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:20px;font-size:var(--step-small)}
+.card__foot .right{justify-self:end}
+
+/* section frame */
+section{padding-inline:var(--m)}
+.wrap{max-width:1360px;margin-inline:auto}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(16px,2vw,32px)}
+
+/* the name: letter on a sheet */
+.name{padding-block:var(--gap)}
+.sheet{grid-column:1 / span 7;background:var(--surface);padding:clamp(28px,4.5vw,64px);position:relative}
+.sheet h2{font-size:var(--step-head);margin-bottom:36px;max-width:12ch}
+.sheet p{max-width:58ch}
+.sheet p+p{margin-top:1.1em}
+.sheet .sign{margin-top:32px;font-family:var(--display);font-size:var(--step-lead);font-style:italic}
+.mark{background:var(--ink);color:var(--accent-ink);padding:0 .25em}
+.scallop{height:18px;background-repeat:repeat-x;background-size:36px 18px}
+.scallop--down-surface{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18'%3E%3Cpath d='M0 0h36a18 18 0 0 1-36 0z' fill='%23e6bfae'/%3E%3C/svg%3E")}
+.scallop--up-bg{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18'%3E%3Cpath d='M0 18h36a18 18 0 0 0-36 0z' fill='%23edccbe'/%3E%3C/svg%3E")}
+.scallop--down-bg{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='36' height='18'%3E%3Cpath d='M0 0h36a18 18 0 0 1-36 0z' fill='%23edccbe'/%3E%3C/svg%3E")}
+.tear{grid-column:1 / span 7;background:var(--surface);border-top:5px dotted var(--bg);padding:20px clamp(28px,4.5vw,64px);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:-18px}
+.name__pic{grid-column:9 / span 4;grid-row:1 / span 3;align-self:start}
+.name__pic img{width:100%;aspect-ratio:3/4.4;object-fit:cover;border-top-left-radius:60% 30%}
+.cap{font-size:var(--step-small);color:var(--muted);margin-top:12px}
+
+/* menu: pinned story */
+.menu{background:var(--field);color:var(--field-ink);padding-block:0}
+.menu .grid{align-items:start}
+.menu__pin{grid-column:1 / span 6;position:sticky;top:0;height:100svh;padding-block:var(--m);display:flex;flex-direction:column;justify-content:space-between;gap:24px}
+.menu__pin h2{font-size:var(--step-head);max-width:11ch;padding-top:clamp(40px,8svh,96px)}
+.menu__pin p{max-width:40ch}
+.menu__pin figure{flex:1;min-height:0;display:flex;flex-direction:column}
+.menu__pin img{flex:1;min-height:0;width:100%;object-fit:cover}
+.menu__sheet-wrap{grid-column:7 / span 6;padding-block:clamp(60px,12svh,140px)}
+.paper{background:var(--bg);color:var(--ink);padding:clamp(28px,4vw,64px);text-align:center}
+.paper h3{font-size:var(--step-head)}
+.paper .note{font-size:var(--step-small);color:var(--muted);margin-top:10px}
+.course{margin-top:56px}
+.course h4{font:500 var(--step-lead)/1.2 var(--display);margin-bottom:22px}
+.dish{display:grid;grid-template-columns:1fr auto;gap:4px 24px;text-align:left;max-width:440px;margin-inline:auto}
+.dish+.dish{margin-top:18px}
+.dish b{font-weight:500}
+.dish .price{font-variant-numeric:tabular-nums lining-nums}
+.dish small{grid-column:1 / -1;font-size:var(--step-small);color:var(--muted);line-height:1.45}
+.paper .hours{margin-top:56px;line-height:1.5}
+
+/* reviews */
+.reviews{padding-block:var(--gap)}
+.scores{grid-column:1 / span 4;list-style:none;display:grid;gap:36px;align-content:start}
+.scores b{display:block;font:500 var(--step-display)/.95 var(--display);letter-spacing:-.03em}
+.scores span{font-size:var(--step-small)}
+.letter{grid-column:6 / span 7;max-width:40ch}
+.letter h2{font-size:var(--step-head);margin-bottom:40px;max-width:14ch}
+.letter blockquote{font-family:var(--display);font-size:var(--step-lead);line-height:1.2;margin-bottom:32px}
+.letter p{line-height:1.55}
+.letter p+p{margin-top:20px}
+.letter .from{margin-top:40px;font-size:var(--step-body)}
+.reviews__pic{grid-column:1 / -1;margin-top:clamp(80px,10vw,140px)}
+.reviews__pic img{width:100%;aspect-ratio:21/8;object-fit:cover;object-position:50% 12%}
+
+/* booking coupon */
+.book{padding-bottom:var(--gap)}
+.book h2.sr-title{font-size:var(--step-head);margin-bottom:40px}
+.coupon{display:grid;grid-template-columns:46fr 54fr;background:var(--field);color:var(--field-ink);position:relative;
+  clip-path:polygon(0 0,calc(46% - 16px) 0,calc(46% - 14px) 8px,calc(46% - 8px) 14px,46% 16px,calc(46% + 8px) 14px,calc(46% + 14px) 8px,calc(46% + 16px) 0,100% 0,100% 100%,calc(46% + 16px) 100%,calc(46% + 14px) calc(100% - 8px),calc(46% + 8px) calc(100% - 14px),46% calc(100% - 16px),calc(46% - 8px) calc(100% - 14px),calc(46% - 14px) calc(100% - 8px),calc(46% - 16px) 100%,0 100%)}
+.coupon__left{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:32px;border-right:5px dotted var(--bg)}
+.coupon__left h3{font-size:var(--step-head);max-width:9ch}
+.status{font-size:var(--step-lead);font-family:var(--display);line-height:1.25}
+.coupon form{padding:clamp(28px,4vw,56px);display:grid;gap:12px;align-content:center}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.field label{display:block;font-size:var(--step-small);margin-bottom:6px}
+.field select,.field input{width:100%;min-height:54px;padding:0 16px;background:#4d2230;color:var(--field-ink);border:0;font:400 var(--step-body)/1 var(--text);appearance:none;border-radius:0}
+.field select{background-image:none}
+.field select:focus-visible,.field input:focus-visible{outline:3px solid var(--accent-ink);outline-offset:0}
+.coupon .btn{margin-top:8px;min-height:58px;width:100%}
+.alt{font-size:var(--step-small)}
+.where{margin-top:clamp(72px,9vw,120px);align-items:end}
+.where figure{grid-column:1 / span 7}
+.where img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.where address{grid-column:9 / span 4;font-style:normal;font-size:var(--step-lead);line-height:1.35;font-family:var(--display)}
+.where address p+p{margin-top:16px}
+.where address .small{font:400 var(--step-body)/1.5 var(--text)}
+
+/* footer: back of the card */
+footer{padding:0 var(--m) var(--m);background:var(--field);color:var(--field-ink)}
+.back{max-width:1360px;margin-inline:auto;background:var(--bg);color:var(--ink);padding:clamp(32px,5vw,72px);display:grid;grid-template-columns:1fr 1fr;gap:40px;position:relative}
+.back h2{font-size:var(--step-display);margin-bottom:24px}
+.back .msg{max-width:36ch}
+.back ul{list-style:none;display:grid;gap:12px;padding-top:140px}
+.stamp{position:absolute;top:clamp(32px,5vw,72px);right:clamp(32px,5vw,72px);width:120px;background:var(--surface);padding:6px;transform:rotate(3deg);transition:transform .3s var(--ease)}
+.stamp:hover{transform:rotate(0) scale(1.04)}
+.stamp img{aspect-ratio:3/4;object-fit:cover}
+.imprint{grid-column:1 / -1;font-size:var(--step-small);color:var(--muted);text-align:center;line-height:1.5}
+.credits{grid-column:1 / -1;font-size:var(--step-small);line-height:1.5}
+.footer-top{max-width:1360px;margin-inline:auto}
+
+/* entrances (content stays visible without JS) */
+.js .rise{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0ms)}
+.js .rise.in{opacity:1;transform:none}
+
+@media (max-width:900px){
+  .card{width:calc(100vw - 32px);min-height:0;top:calc(50svh - 34svh);border-top-left-radius:42vw 18svh}
+  .card__title{font-size:var(--step-display);padding-left:18vw}
+  .card__title .tw{display:inline-block}
+  .card__body{grid-template-columns:1fr;gap:18px}
+  .facts{font-size:var(--step-body)}
+  .card__lead{font-size:var(--step-lead)}
+  .card__foot{grid-template-columns:1fr;justify-items:start;gap:12px}
+  .card__foot .right{justify-self:start}
+  .card__foot .btn{order:-1;width:100%}
+  .sheet,.tear,.name__pic,.scores,.letter,.where figure,.where address,.name .scallop{grid-column:1 / -1 !important}
+  .back h2,.back .msg{padding-right:92px}
+  .name__pic{grid-row:auto;margin-top:48px}
+  .menu__pin{grid-column:1 / -1;position:relative;height:auto;padding-top:96px}
+  .menu__pin img{aspect-ratio:4/3;flex:none}
+  .menu__sheet-wrap{grid-column:1 / -1;padding-top:48px;margin-inline:calc(var(--m) * -1 + 10px)}
+  .scores{grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:64px}
+  .scores b{font-size:var(--step-head)}
+  .coupon{grid-template-columns:1fr;clip-path:none}
+  .coupon__left{border-right:0;border-bottom:5px dotted var(--bg)}
+  .row{grid-template-columns:1fr}
+  .back{grid-template-columns:1fr}
+  .back ul{padding-top:0}
+  .stamp{width:76px}
+  .where address{margin-top:32px}
+  .reviews__pic img{aspect-ratio:2/1;object-position:40% 4%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero__room img{animation:none}
+  .js .rise{transform:none;transition:opacity .4s}
+  .card{transform:none!important}
+  *{transition-duration:.01ms!important}
+}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<div class="preview" role="note">
+  <span data-en="Preview of a new website for Carizzi d'Amuri, made by Leonardo Perugia. Not the official site.">Anteprima di un nuovo sito per Carizzi d'Amuri, realizzata da Leonardo Perugia. Non è il sito ufficiale.</span>
+</div>
+<button class="lang" type="button" id="lang" aria-label="Read in English">EN</button>
+
+<header class="hero" id="top">
+  <div class="hero__room">
+    <img src="img/arches-1903.jpg" width="1400" height="2163" alt="Archi di pietra di un chiostro palermitano in una cartolina acquerellata del 1903" data-en-alt="Stone arches of a Palermo cloister in a 1903 watercolour postcard">
+  </div>
+  <div class="hero__stage">
+    <div class="card" id="card">
+      <h1 class="card__title" aria-label="Carizzi d'Amuri"><span>Carizzi</span> <span class="tw"><span>d'</span><span>Amuri</span></span></h1>
+      <div class="card__body">
+        <p class="card__lead" data-en="Sicilian restaurant, reworked, for dinner under stone arches.">Ristorante siciliano rivisitato, a cena sotto archi di pietra.</p>
+        <ul class="facts">
+          <li>Via Lungarini 21, Kalsa, Palermo</li>
+          <li data-en="Dinner, 19:30 – 23:00">Cena, 19:30 – 23:00</li>
+          <li data-en="Closed on Tuesday">Chiuso il martedì</li>
+        </ul>
+      </div>
+      <div class="card__foot">
+        <span data-en="4.6 on Google · 559 reviews">4,6 su Google · 559 recensioni</span>
+        <a class="btn" href="#prenota" data-en="Book a table">Prenota un tavolo</a>
+        <a class="link right" href="#menu" data-en="This week's menu">Il menù della settimana</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="name" aria-labelledby="name-title">
+  <div class="wrap grid">
+    <article class="sheet rise">
+      <h2 id="name-title" data-en="Caresses of love">Carezze d'amore</h2>
+      <p data-en="In Sicilian, carizzi d'amuri means caresses of love. It is the name we chose for a small room in the Kalsa, a few steps from Piazza Marina.">In siciliano, <span class="mark">carizzi d'amuri</span> vuol dire carezze d'amore. È il nome che abbiamo scelto per una sala piccola nella Kalsa, a pochi passi da Piazza Marina.</p>
+      <p data-en="The room is stone half-arches and soft light. A few tables, so it is best to book, especially at weekends.">La sala è fatta di semiarchi in pietra e giochi di luce. I tavoli sono pochi: meglio prenotare, soprattutto nel fine settimana.</p>
+      <p data-en="The cooking is Sicilian, reworked with a modern hand: fish and meat, first courses made fresh, and a menu that changes every week with what the market brings.">La cucina è siciliana, rivisitata in chiave moderna: pesce e carne, primi fatti al momento, e un menù che cambia ogni settimana con quello che offre il mercato.</p>
+      <p data-en="Two brothers run the house: one in the dining room, one in the kitchen.">A gestire il locale sono due fratelli: uno in sala, l'altro in cucina.</p>
+      <p class="sign">Carizzi d'Amuri</p>
+    </article>
+    <div class="scallop scallop--down-surface" style="grid-column:1 / span 7;margin-top:-1px" aria-hidden="true"></div>
+    <div class="tear rise" style="--d:120ms">
+      <span data-en="Book on WhatsApp">Prenota su WhatsApp</span>
+      <a class="link" href="https://wa.me/393291341439">+39 329 134 1439</a>
+    </div>
+    <figure class="name__pic rise" style="--d:180ms">
+      <img src="img/marina-cartouche.jpg" width="1000" height="1552" loading="lazy" alt="Cartiglio barocco in pietra su un palazzo di Piazza Marina" data-en-alt="Baroque stone cartouche on a building in Piazza Marina">
+      <figcaption class="cap" data-en="Piazza Marina, two minutes from our door.">Piazza Marina, a due minuti dalla nostra porta.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="menu on-dark" id="menu" aria-labelledby="menu-title">
+  <div class="wrap grid">
+    <div class="menu__pin">
+      <h2 id="menu-title" class="rise" data-en="This week's menu">Il menù della settimana</h2>
+      <p class="rise" style="--d:80ms" data-en="It changes every week. Here is an example of what you might find: fish, meat and the desserts of the house.">Cambia ogni settimana. Ecco un esempio di cosa potreste trovare: pesce, carne e i dolci della casa.</p>
+      <figure class="rise" style="--d:160ms">
+        <img src="img/martorana.jpg" width="1600" height="900" loading="lazy" alt="Le cupole rosse di San Cataldo e il campanile della Martorana, nella Kalsa" data-en-alt="The red domes of San Cataldo and the bell tower of La Martorana, in the Kalsa">
+        <figcaption class="cap" style="color:var(--field-ink)" data-en="San Cataldo and La Martorana, a short walk away.">San Cataldo e la Martorana, a pochi minuti a piedi.</figcaption>
+      </figure>
+    </div>
+    <div class="menu__sheet-wrap">
+      <div class="scallop scallop--up-bg" aria-hidden="true"></div>
+      <div class="paper rise">
+        <h3>Carizzi d'Amuri</h3>
+        <p class="note" data-en="Sample menu · prices in euro">Esempio di carta · prezzi in euro</p>
+
+        <div class="course">
+          <h4 data-en="Starters">Antipasti</h4>
+          <div class="dish"><b>Polpesto</b><span class="price">16</span><small data-en="Octopus on a light pesto">Polpo su pesto leggero</small></div>
+        </div>
+
+        <div class="course">
+          <h4 data-en="First courses">Primi</h4>
+          <div class="dish"><b data-en="Bronze-cut linguine">Linguine trafilate al bronzo</b><span class="price">19</span><small data-en="With raw prawns">Con gamberi crudi</small></div>
+          <div class="dish"><b data-en="Black fettuccine">Fettuccine nere</b><span class="price">18</span><small data-en="Tuna and prawns">Tonno e gamberi</small></div>
+          <div class="dish"><b data-en="Shellfish linguine">Linguine ai crostacei</b><span class="price">20</span><small data-en="Cherry tomatoes with mint, goat's cheese cream with curry, vegetable julienne">Pomodorini alla menta, crema di caprino al curry, julienne di verdure</small></div>
+          <div class="dish"><b>Paccheri</b><span class="price">16</span><small data-en="A sauce to mop up with bread">Un sugo da scarpetta</small></div>
+          <div class="dish"><b data-en="Fettuccine with bresaola">Fettuccine con bresaola</b><span class="price">16</span><small data-en="Green peppercorns">E pepe verde</small></div>
+        </div>
+
+        <div class="course">
+          <h4 data-en="Main courses">Secondi</h4>
+          <div class="dish"><b data-en="Pork fillet with cherries">Filetto di maiale alle ciliegie</b><span class="price">18</span><small data-en="Goat's cheese cream">Crema di caprino</small></div>
+          <div class="dish"><b data-en="Sea bream fillet">Filetto di orata</b><span class="price">19</span><small data-en="Courgette cream, leek, basil and almonds">Crema di zucchine, porro, basilico e mandorle</small></div>
+        </div>
+
+        <div class="course">
+          <h4 data-en="Desserts">Dolci</h4>
+          <div class="dish"><b data-en="Deconstructed cassata">Cassata destrutturata</b><span class="price">8</span><small data-en="The Palermo classic, taken apart">Il classico palermitano, scomposto</small></div>
+          <div class="dish"><b>Delizia d'amuri</b><span class="price">7</span><small data-en="The house dessert">Il dolce della casa</small></div>
+        </div>
+
+        <p class="hours" data-en="Monday and Wednesday to Sunday, 19:30 – 23:00. Closed on Tuesday.">Lunedì e da mercoledì a domenica, 19:30 – 23:00.<br>Martedì chiuso.</p>
+      </div>
+      <div class="scallop scallop--down-bg" aria-hidden="true"></div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews" aria-labelledby="rev-title">
+  <div class="wrap grid">
+    <ul class="scores">
+      <li class="rise"><b>4,6</b><span data-en="Google · 559 reviews">Google · 559 recensioni</span></li>
+      <li class="rise" style="--d:80ms"><b>4,6</b><span data-en="Tripadvisor · 1,328 reviews">Tripadvisor · 1.328 recensioni</span></li>
+      <li class="rise" style="--d:160ms"><b>9,7</b><span data-en="TheFork · 377 reviews">TheFork · 377 recensioni</span></li>
+    </ul>
+    <div class="letter">
+      <h2 id="rev-title" class="rise" data-en="What our guests write">Cosa scrivono i nostri ospiti</h2>
+      <blockquote class="rise" style="--d:80ms"><p>Sugo dei paccheri da scarpetta, carne che si scioglie in bocca.</p></blockquote>
+      <p class="rise" style="--d:140ms">Per le fettuccine nere con tonno e gamberi al mio tavolo ho visto fare il bis.</p>
+      <p class="rise" style="--d:200ms">Consigliato se volete mangiare piatti ricercati in un ambiente molto chic.</p>
+      <p class="from rise" style="--d:260ms" data-en="From reviews on Google">Dalle recensioni su Google</p>
+    </div>
+    <figure class="reviews__pic rise">
+      <img src="img/kalsa-gate.jpg" width="1600" height="894" loading="lazy" alt="Palazzo in pietra dorata e la porta ad arco della Kalsa, con i pini della piazza" data-en-alt="Golden stone palazzo and arched gate in the Kalsa, with the square's pine trees">
+      <figcaption class="cap" data-en="The Kalsa, the old Arab quarter of Palermo, where we are.">La Kalsa, l'antico quartiere arabo di Palermo, dove ci trovate.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="book" id="prenota" aria-labelledby="book-title">
+  <div class="wrap">
+    <h2 class="sr-title rise" id="book-title" data-en="Book a table">Prenota un tavolo</h2>
+    <div class="coupon on-dark rise" style="--d:80ms">
+      <div class="coupon__left">
+        <h3 data-en="A table for tonight?">Un tavolo per stasera?</h3>
+        <p class="status" id="status" aria-live="polite">Siamo aperti dalle 19:30 alle 23:00, tranne il martedì.</p>
+        <p class="alt"><span data-en="Or call">Oppure chiamate il</span> <a class="link" href="tel:+393291341439">329 134 1439</a></p>
+      </div>
+      <form id="booking" action="https://wa.me/393291341439" method="get">
+        <div class="row">
+          <div class="field"><label for="day" data-en="Day">Giorno</label><select id="day" name="day"></select></div>
+          <div class="field"><label for="time" data-en="Time">Ora</label>
+            <select id="time" name="time"><option>19:30</option><option selected>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option><option>22:00</option></select></div>
+        </div>
+        <div class="row">
+          <div class="field"><label for="people" data-en="People">Persone</label>
+            <select id="people" name="people"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+          <div class="field"><label for="who" data-en="Your name">Il vostro nome</label><input id="who" name="who" autocomplete="name"></div>
+        </div>
+        <button class="btn" type="submit" data-en="Send the request on WhatsApp">Invia la richiesta su WhatsApp</button>
+      </form>
+    </div>
+
+    <div class="grid where">
+      <figure class="rise">
+        <img src="img/giardino-garibaldi.jpg" width="1400" height="788" loading="lazy" alt="Il Giardino Garibaldi in Piazza Marina, con i grandi ficus e le bouganville" data-en-alt="The Giardino Garibaldi in Piazza Marina, with its great ficus trees and bougainvillea">
+        <figcaption class="cap" data-en="The Giardino Garibaldi in Piazza Marina, on the way to us.">Il Giardino Garibaldi in Piazza Marina, sulla strada per arrivare da noi.</figcaption>
+      </figure>
+      <address class="rise" style="--d:100ms">
+        <p>Via Lungarini 21<br>90133 Palermo</p>
+        <p class="small" data-en="Kalsa, between Piazza Marina and Via Alloro.">Kalsa, tra Piazza Marina e Via Alloro.</p>
+        <p class="small"><a class="link" href="https://www.google.com/maps/search/?api=1&query=Carizzi+d%27Amuri+Via+Lungarini+21+Palermo" data-en="Open in Google Maps">Apri in Google Maps</a></p>
+      </address>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="on-dark" aria-labelledby="foot-title">
+  <div class="footer-top"><div class="scallop scallop--up-bg" aria-hidden="true"></div></div>
+  <div class="back">
+    <div>
+      <h2 id="foot-title" data-en="See you tonight.">A stasera.</h2>
+      <p class="msg" data-en="We open at half past seven. If you are coming, write to us first: the room is small and we would like to keep a table for you.">Apriamo alle sette e mezza. Se passate, scriveteci prima: la sala è piccola e ci teniamo a tenervi un tavolo.</p>
+    </div>
+    <ul>
+      <li><a class="link" href="https://wa.me/393291341439">WhatsApp +39 329 134 1439</a></li>
+      <li><a class="link" href="tel:+393291341439" data-en="Call 329 134 1439">Telefono 329 134 1439</a></li>
+      <li><a class="link" href="https://www.instagram.com/carizzi_damuri/">Instagram @carizzi_damuri</a></li>
+      <li><a class="link" href="https://www.google.com/maps/search/?api=1&query=Carizzi+d%27Amuri+Via+Lungarini+21+Palermo">Via Lungarini 21, Palermo</a></li>
+    </ul>
+    <figure class="stamp"><img src="img/carretto-1910.jpg" width="700" height="450" loading="lazy" alt="Cartolina del 1910 con un carretto siciliano a Palermo" data-en-alt="1910 postcard of a Sicilian cart in Palermo"></figure>
+    <p class="credits">Immagini: <a href="https://commons.wikimedia.org/wiki/File:Palermo_(NBY_444054).jpg">“Palermo (NBY 444054)”</a>, V. Cottieri, pubblico dominio; <a href="https://commons.wikimedia.org/wiki/File:Detail_-_Building_in_Piazza_Marina_-_Palermo_-_Italy_2015.JPG">“Detail - Building in Piazza Marina”</a>, José Luiz, <a href="https://creativecommons.org/licenses/by-sa/4.0">CC BY-SA 4.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Kalsa,_Palermo,_Italy_-_panoramio_(4).jpg">“Kalsa, Palermo (4)”</a> e <a href="https://commons.wikimedia.org/wiki/File:Kalsa,_Palermo,_Italy_-_panoramio_(20).jpg">“Kalsa, Palermo (20)”</a> e <a href="https://commons.wikimedia.org/wiki/File:Kalsa,_Palermo,_Italy_-_panoramio.jpg">“Kalsa, Palermo”</a>, trolvag, <a href="https://creativecommons.org/licenses/by-sa/3.0">CC BY-SA 3.0</a>; <a href="https://commons.wikimedia.org/wiki/File:Palermo_Purger_8628.jpg">“Palermo Purger 8628”</a>, Purger &amp; Co., pubblico dominio. Tutte via Wikimedia Commons.</p>
+    <p class="imprint" data-en="Preview made by Leonardo Perugia for Carizzi d'Amuri · 2026">Anteprima realizzata da Leonardo Perugia per Carizzi d'Amuri · 2026</p>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const TZ = 'Europe/Rome';
+  let lang = 'it';
+  // --- language toggle: swap text stored in data-en, keep Italian in data-it
+  const swap = () => {
+    document.querySelectorAll('[data-en]').forEach(el => {
+      if (!el.dataset.it) el.dataset.it = el.innerHTML;
+      el.innerHTML = lang === 'en' ? el.dataset.en : el.dataset.it;
+    });
+    document.querySelectorAll('[data-en-alt]').forEach(el => {
+      if (!el.dataset.itAlt) el.dataset.itAlt = el.alt;
+      el.alt = lang === 'en' ? el.dataset.enAlt : el.dataset.itAlt;
+    });
+    document.documentElement.lang = lang;
+    const b = document.getElementById('lang');
+    b.textContent = lang === 'en' ? 'IT' : 'EN';
+    b.setAttribute('aria-label', lang === 'en' ? 'Leggi in italiano' : 'Read in English');
+    fillDays(); showStatus();
+  };
+  document.getElementById('lang').addEventListener('click', () => { lang = lang === 'it' ? 'en' : 'it'; swap(); });
+
+  // --- Rome time helpers
+  const romeParts = d => Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:TZ,weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(d).map(p=>[p.type,p.value]));
+  const dayName = (d,l) => new Intl.DateTimeFormat(l==='en'?'en-GB':'it-IT',{timeZone:TZ,weekday:'long',day:'numeric',month:'long'}).format(d);
+  const isTue = d => new Intl.DateTimeFormat('en-GB',{timeZone:TZ,weekday:'short'}).format(d) === 'Tue';
+
+  // --- the live thing: is it open tonight, and which days can be booked
+  function showStatus(){
+    const now = new Date(), p = romeParts(now), mins = (+p.hour)*60 + (+p.minute);
+    const el = document.getElementById('status'); let t;
+    if (isTue(now)) t = lang==='en' ? 'Tonight we are closed: it is Tuesday. We open again tomorrow at 19:30.' : 'Stasera siamo chiusi: è martedì. Riapriamo domani alle 19:30.';
+    else if (mins < 19*60+30) { const left = 19*60+30-mins, h = Math.floor(left/60), m = left%60;
+      t = lang==='en' ? `Open tonight from 19:30, in ${h ? h+' h ' : ''}${m} min.` : `Stasera apriamo alle 19:30, tra ${h ? h+' ore e ' : ''}${m} minuti.`; }
+    else if (mins < 23*60) t = lang==='en' ? 'We are open right now, until 23:00.' : 'Siamo aperti adesso, fino alle 23:00.';
+    else t = lang==='en' ? 'The kitchen has closed for tonight. Book for tomorrow.' : 'La cucina ha chiuso per stasera. Prenotate per domani.';
+    el.textContent = t;
+  }
+  function fillDays(){
+    const sel = document.getElementById('day'), keep = sel.value; sel.innerHTML = '';
+    const now = new Date(), p = romeParts(now), late = (+p.hour)*60 + (+p.minute) >= 22*60;
+    for (let i = late ? 1 : 0; i < 15; i++){
+      const d = new Date(now.getTime() + i*86400000);
+      const o = document.createElement('option');
+      const label = i===0 ? (lang==='en'?'Tonight':'Stasera') : i===1 ? (lang==='en'?'Tomorrow':'Domani') : dayName(d,lang);
+      o.value = dayName(d,'it');
+      if (isTue(d)) { o.disabled = true; o.textContent = label + (lang==='en' ? ' (closed)' : ' (chiuso)'); }
+      else o.textContent = label;
+      sel.appendChild(o);
+    }
+    if (keep && [...sel.options].some(o=>o.value===keep && !o.disabled)) sel.value = keep;
+    else { const first = [...sel.options].find(o=>!o.disabled); if (first) sel.value = first.value; }
+  }
+  document.getElementById('booking').addEventListener('submit', e => {
+    e.preventDefault();
+    const f = e.target, who = f.who.value.trim();
+    const msg = `Buonasera! Vorrei prenotare un tavolo per ${f.people.value} ${f.people.value==='1'?'persona':'persone'}, ${f.day.value} alle ${f.time.value}.` + (who ? ` A nome di ${who}.` : '') + ' Grazie!';
+    window.open('https://wa.me/393291341439?text=' + encodeURIComponent(msg), '_blank', 'noopener');
+  });
+  fillDays(); showStatus(); setInterval(showStatus, 60000);
+
+  // --- entrances
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.rise').forEach(el => io.observe(el));
+
+  // --- signature move: the card lifts and shrinks as the room scrolls away
+  const card = document.getElementById('card'), hero = document.querySelector('.hero');
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!reduce) {
+    const tick = () => {
+      const r = hero.getBoundingClientRect(), span = hero.offsetHeight - innerHeight;
+      const k = Math.min(1, Math.max(0, -r.top / span));
+      card.style.transform = `translateY(${-k*6}svh) scale(${1 - k*0.12})`;
+    };
+    addEventListener('scroll', () => requestAnimationFrame(tick), {passive:true}); tick();
+  }
+})();
+</script>
+</body>
+</html>
